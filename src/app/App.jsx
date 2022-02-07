@@ -10,6 +10,7 @@ import Nav from "../modules/nav";
 import Home from "../modules/landing";
 import Error from "../modules/error";
 import Profile from "../modules/profile";
+import Project from "../pages/Project";
 
 const App = () => {
   return (
@@ -17,9 +18,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Nav/>}>
           <Route path="/" element={<Home/>} />
+          <Route path="/projects" element={<Project />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Error/>} />
-
         </Route>
       </Routes>
     </Router>

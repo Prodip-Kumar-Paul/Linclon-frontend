@@ -15,7 +15,7 @@ const Footer = () => {
           {
             navigationFooter.map(([path,name])=>{
               return (
-              <li className="">
+              <li key={name} className="">
               <Link to={path}>{name}</Link>
               </li>
               );

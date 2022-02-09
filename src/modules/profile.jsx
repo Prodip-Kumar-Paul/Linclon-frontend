@@ -1,8 +1,20 @@
 import React ,{useState} from "react";
+import axios from "axios";
 import Avatar from "../assets/images/logo512.png";
 import Footer from "./footer";
 
 const Profile = () => {
+  
+    async function getApi(){
+    const response= await axios.get("https://linclon-backend.herokuapp.com/api/v1/user/user_profile",{
+     
+  },{
+    "headers":{
+    "Authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDBmNWZiOWEyMGM5YmNiYTFiMmRmMiIsInR5cGUiOiJVc2VyIiwiZ2l0aHViVG9rZW4iOiJnaG9fU1lRakFQQXhuQjJrR0JHR2NTQkljbWcyR0M3RzF3MXE0NWx5IiwiaWF0IjoxNjQ0MjMwMTM5LCJleHAiOjE2NDQ4MzQ5Mzl9.shQ6zkUC7en6-4W4d2pQrpbTRGTKDsYwwXgyBqxswcE",
+  }});
+     console.log(response);
+  }
+  getApi()
   const [uploadShown,setUploadShown]=useState(false);
   let ifUploadShown=()=>{
     if(uploadShown)

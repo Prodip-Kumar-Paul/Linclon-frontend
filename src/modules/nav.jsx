@@ -22,11 +22,6 @@ const Nav = () => {
          document.body.style.backgroundImage =
             "linear-gradient(rgb(0,0,0),rgb(20,20,20))";
       }
-   //    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-   //       document.documentElement.classList.add('dark');
-   //   } else {
-   //       document.documentElement.classList.remove('dark')
-   //   }
    };
 
    const navigation = [
@@ -81,7 +76,7 @@ const Nav = () => {
                <section className="flex flex-col gap-2 mx-auto max-w-[15rem] my-5">
                   <select className="rounded-full px-3 text-black border-2">
                      <option value="0">User Type ?</option>
-                     <option value="1">Creater</option>
+                     <option value="1">Creator</option>
                      <option value="2">Contributor</option>
                   </select>
                   <label className="mx-auto">Email :</label>
@@ -94,12 +89,12 @@ const Nav = () => {
                   <a href="/" className="mr-32 hover:text-green-900">
                      forget email?
                   </a>
-                  <submit
+                  <button
                      type="submit"
                      className="mx-auto bg-cyan-500 py-1 px-2 hover:text-black cursor-pointer text-white rounded-md"
                   >
-                     Sign In
-                  </submit>
+                     Log In
+                  </button>
                </section>
                <p className="font-thin text-center mx-[3rem] dark:text-white text-slate-500 mt-10">
                   *by continuing this you can also create a new account with
@@ -120,8 +115,7 @@ const Nav = () => {
                   className="rounded-full block xs:w-[100px] md:w-[150px] animate-pulse"
                   height="50px"
                ></img>
-               {/* <span className="ml-2"></span> */}
-               {navigation.map(([path, name]) => {
+               {navigation.map(([path, name],index) => {
                   return (
                      <li
                         key={Math.random()}
@@ -140,8 +134,8 @@ const Nav = () => {
                      placeholder="Search..."
                   />
                </article>
-               <li className=" py-1 px-2 rounded-[.2em] bg-[rgba(0,0,0,0.3)] text-[1rem]">
-                  <button onClick={isSignInModal}>Login</button>
+               <li onClick={isSignInModal} className="cursor-pointer py-1 px-2 rounded-[.2em] bg-cyan-600 text-[1rem]">
+                  <button>Login</button>
                </li>
                <article
                   onClick={themeChange}

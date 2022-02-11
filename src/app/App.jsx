@@ -11,6 +11,7 @@ import Home from "../modules/landing";
 import Error from "../modules/error";
 import Profile from "../modules/profile";
 import Project from "../pages/Project";
+import LogIn from "../modules/login";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/" element={<Home/>} />
           <Route path="/projects" element={<Project />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/linclonauth" element={<LogIn/>}/>
           <Route path="*" element={<Error/>} />
         </Route>
       </Routes>

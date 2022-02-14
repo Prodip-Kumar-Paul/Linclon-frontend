@@ -1,5 +1,5 @@
-import React from "react";
-import Footer from "./footer";
+import React,{useState,useEffect} from "react";
+import Footer from "../utils/footer";
 import { Link } from "react-router-dom";
 
 //icons
@@ -12,7 +12,12 @@ import findProfile from "../assets/images/home_icons/findProfile.png";
 import feedback from "../assets/images/home_icons/feedback.png";
 
 const Landing = () => {
-  const name = sessionStorage.getItem("email");
+  // const [name,setName]=useState();
+  // useEffect(() => {
+  //   setName( sessionStorage.getItem("email"));
+    
+  // }, []);
+  let name=sessionStorage.getItem('email');
   const language = [
     ["JAVASCRIPT"],
     ["C++"],

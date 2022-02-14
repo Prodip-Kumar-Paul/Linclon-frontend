@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import GitHub from "../assets/images/GitHub-Mark.png";
-import Footer from "./footer";
+import Footer from "../utils/footer";
+import Loading from "../utils/loading";
 
 //Apis
 import githubRequestForValidate from "../apis/githubRequestForValidate";
 import api from "../apis/api";
-import Loading from "./loading";
+import httpUrl from "../apis/interceptor";
 
 const LogIn = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const LogIn = () => {
     setLoading(true);
     const code = getCode.get("code");
     axios
-      .post(`${api}/auth/signup_or_login`, {
+      .post(`${api.baseURL}${api.LOGIN}`, {
         userType: userType,
         email: e_mail,
         githubCode: code,
@@ -31,9 +32,9 @@ const LogIn = () => {
       .then((res) => {
         console.log(res.data);
         setLoading(false);
-        locateBack();
         storage.setItem("token", res.data.data);
         storage.setItem("email", e_mail);
+        locateBack();
 
         console.log(storage.getItem("token"));
       });
@@ -65,8 +66,8 @@ const LogIn = () => {
             className="rounded-full px-3 text-black border-2"
           >
             <option value="0">User Type ?</option>
-            <option value="1">User</option>
-            <option value="2">Admin</option>
+            <option value="1">Creator</option>
+            <option value="2">Contributor</option>
           </select>
           <label className="mx-auto">Email :</label>
           <input

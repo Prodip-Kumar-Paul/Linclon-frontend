@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Avatar from "../assets/images/logo512.png";
-import Loading from "./loading";
-import Footer from "./footer";
+import Loading from "../utils/loading";
+import Footer from "../utils/footer";
+//api
+import api from "../apis/api";
+import httpUrl from "../apis/interceptor";
 
 const Profile = () => {
   const [loading, setLoading] = useState(false);
@@ -19,14 +22,8 @@ const Profile = () => {
     setApi({ ...api, avatar_url, login, name, type, public_repos, bio });
   };
   const getData = () => {
-    axios
-      .get("https://linclon-backend.herokuapp.com/api/v1/user/user_profile", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      })
+    httpUrl
+      .get(api.USER)
       .then((res) => {
         handleChange(res.data.data);
         console.log(res.data.data);

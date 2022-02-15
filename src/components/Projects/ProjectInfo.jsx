@@ -1,4 +1,4 @@
-import logo from "../assets/images/GitHub-Mark.png";
+import logo from "../../assets/images/GitHub-Mark.png";
 
 const Project = (props) => {
    const projectDetails = [

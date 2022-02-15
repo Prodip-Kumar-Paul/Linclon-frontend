@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import Footer from "../utils/footer";
+import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 
 //icons

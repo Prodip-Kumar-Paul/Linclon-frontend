@@ -2,13 +2,13 @@ import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 
 //modules
-import Nav from "./utils/nav";
+import Nav from "./components/nav";
 import Home from "./pages/landing";
-import Error from "./pages/error";
+import Error from "./utils/error";
 import Profile from "./pages/profile";
 import Project from "./pages/Project";
 import LogIn from "./pages/login";
-import LogOut from "./utils/logOut";
+import LogOut from "./components/logOut";
 
 const authorized = [
   {

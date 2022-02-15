@@ -1,8 +1,8 @@
 import axios from 'axios';
-import api from './apis';
+import apis from './apis';
 
 const httpUrl = axios.create({
-  baseUrl: api.baseURL
+  baseUrl: apis.baseURL
   //   timeout: 1000,
   //   headers: { "X-Custom-Header": "foobar" },
 });

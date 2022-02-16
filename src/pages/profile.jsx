@@ -5,6 +5,7 @@ import Loading from "../utils/loading";
 import Footer from "../components/footer";
 //api
 import apis from "../apis/apis";
+
 import httpUrl from "../apis/interceptor";
 
 const Profile = () => {

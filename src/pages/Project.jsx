@@ -1,4 +1,4 @@
-import ProjectInfo from "../components/ProjectInfo";
+import ProjectInfo from "../components/Projects/ProjectInfo";
 
 const Project = () => {
    return (

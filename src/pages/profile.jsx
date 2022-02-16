@@ -4,13 +4,12 @@ import Avatar from "../assets/images/logo512.png";
 import Loading from "../utils/loading";
 import Footer from "../components/footer";
 //api
-import api from "../apis/apis";
+import apis from "../apis/apis";
+
 import httpUrl from "../apis/interceptor";
 
 const Profile = () => {
    const [loading, setLoading] = useState(false);
-   const storage = sessionStorage;
-   const token = storage.getItem("token");
    const [api, setApi] = useState({});
    let handleChange = (data) => {
       let avatar_url = data.avatar_url;
@@ -22,7 +21,7 @@ const Profile = () => {
       setApi({ ...api, avatar_url, login, name, type, public_repos, bio });
    };
    const getData = () => {
-      httpUrl.get(api.USER).then((res) => {
+      httpUrl.get(apis.USER).then((res) => {
          handleChange(res.data.data);
          console.log(res.data.data);
          setLoading(true);
@@ -31,7 +30,6 @@ const Profile = () => {
    useEffect(() => {
       getData();
    }, []);
-   // getData();
 
    const [uploadShown, setUploadShown] = useState(false);
    let ifUploadShown = () => {

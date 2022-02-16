@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 // //modules
 // import Nav from "../modules/nav";
@@ -15,11 +11,11 @@ import {
 
 import PageRoutes from "../routes";
 const App = () => {
-  return (
-    <Router>
-        <PageRoutes/>
-    </Router>
-  );
+   return (
+      <Router>
+         <PageRoutes />
+      </Router>
+   );
 };
 
 export default App;

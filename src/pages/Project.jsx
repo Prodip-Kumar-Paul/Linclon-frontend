@@ -1,3 +1,4 @@
+import FilterProject from "../components/Projects/FilterProject";
 import ProjectInfo from "../components/Projects/ProjectInfo";
 
 const Project = () => {
@@ -5,6 +6,7 @@ const Project = () => {
       <>
          <div className="text-center text-3xl flex justify-center dark:text-white">
             <ProjectInfo />
+            <FilterProject />
          </div>
       </>
    );

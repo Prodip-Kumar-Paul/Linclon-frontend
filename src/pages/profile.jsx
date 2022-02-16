@@ -40,7 +40,6 @@ const Profile = () => {
       <>
          {loading || <Loading />}
          <div className="mx-[5%] my-[2rem] rounded-lg bg-white dark:bg-gradient-to-r dark:from-[rgb(50,50,50)] dark:to-[rgb(40,40,40)]">
-            {/* <button onClick={getData}>Click Here for fetch --</button> */}
             <div className="flex xs:flex-col md:flex-row dark:text-white mx-[2rem] pb-[5rem] gap-10 font-bold">
                <section className="flex flex-col items-center my-10 basis-[30%] shrink-0 xs:mx-auto md:mx-0">
                   <img

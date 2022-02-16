@@ -10,8 +10,9 @@ import apis from "../apis/apis";
 
 const LogIn = () => {
   const [loading, setLoading] = useState(false);
-  const [e_mail, setE_mail] = useState("userUnknown@gmail.com");
+  const [e_mail, setE_mail] = useState("");
   const [userType, setUserType] = useState("");
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   const [getCode, setGetCode] = useSearchParams("");
   const code = getCode.get("code");
@@ -29,20 +30,23 @@ const LogIn = () => {
       email: e_mail,
       githubCode: code,
     });
-
-    console.log(res.data);
-    storage.setItem("token", res.data.data);
-    storage.setItem("email", e_mail);
-    setLoading(false);
-    locateBack();
-
-    console.log(`code:${code}`);
+    if (res.data.status && e_mail && userType) {
+      console.log(res.data);
+      storage.setItem("token", res.data.data);
+      storage.setItem("email", e_mail);
+      locateBack();
+    }
+    else
+    {
+      setError(true);
+      setLoading(false);
+    }
   };
 
   return (
     <>
       {loading && <Loading />}
-      <section className="font-bold rounded-[.5rem] max-w-[25rem] mx-auto my-[5rem] bg-white dark:bg-gradient-to-r dark:from-[rgb(50,50,50)] dark:to-[rgb(40,40,40)] dark:text-white text-lg">
+      <section className=" rounded-[.5rem] max-w-[25rem] mx-auto my-[5rem] bg-white dark:bg-gradient-to-r dark:from-[rgb(50,50,50)] dark:to-[rgb(40,40,40)] dark:text-white text-lg">
         <section className="flex flex-col gap-2 mx-auto max-w-[15rem] my-5">
           <br />
           <div>
@@ -56,7 +60,7 @@ const LogIn = () => {
             <section className="flex">
               <a
                 href={apis.GITHUB_AUTH_API}
-                className="dark:bg-zinc-900 block hover:text-green-900 rounded-lg bg-black text-white text-center ml-3 mb-2 px-4 min-w-fit"
+                className="dark:bg-zinc-900 block hover:text-green-900 rounded-lg bg-black text-white text-center ml-3 mb-2 px-4 min-w-fit font-bold"
               >
                 Continue with GitHub
               </a>
@@ -94,6 +98,7 @@ const LogIn = () => {
           >
             Log In
           </button>
+          <p className="text-center text-red-600">{error?"ERROR!":""}</p>
         </section>
         <p className="font-thin text-center mx-[3rem] dark:text-white text-slate-500 mt-10">
           *by continuing this you can also create a new account with GitHub

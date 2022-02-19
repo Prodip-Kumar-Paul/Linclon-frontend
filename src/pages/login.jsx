@@ -51,7 +51,7 @@ const LogIn = () => {
           <br />
           <div>
             <img
-              className="mx-auto rounded-[45px]"
+              className="mx-auto rounded-full"
               src={GitHub}
               alt="GitHub"
               height="90px"

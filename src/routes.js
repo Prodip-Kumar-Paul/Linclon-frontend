@@ -8,7 +8,7 @@ import Error from "./utils/error";
 import Profile from "./pages/profile";
 import Project from "./pages/Project";
 import LogIn from "./pages/login";
-import LogOut from "./components/logOut";
+import LogOut from "./pages/logOut";
 
 const authorized = [
   {

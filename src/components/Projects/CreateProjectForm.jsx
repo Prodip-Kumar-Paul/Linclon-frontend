@@ -2,10 +2,19 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import ErrorMsg from "../ErrorMsg";
+import Swal from "sweetalert2";
+import apis from "../../apis/apis";
+import httpUrl from "../../apis/interceptor";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProjectCreateSchema = Yup.object().shape({
-   projectName: Yup.string().required("Required"),
-   email: Yup.string().email("Invalid email").required("Required"),
+   projectName: Yup.string().required("* Project name required"),
+   description: Yup.string().required("* Description required"),
+   githubRepo: Yup.string().required(
+      `* choose a github repo
+      if not present create it first`
+   ),
 });
 
 export default function CreateProjectForm() {
@@ -29,8 +38,15 @@ export default function CreateProjectForm() {
             }}
             validationSchema={ProjectCreateSchema}
             onSubmit={async (values) => {
-               await new Promise((r) => setTimeout(r, 500));
-               alert(JSON.stringify(values, null, 2));
+               console.log(JSON.stringify(values, null, 2));
+               // const res = await httpUrl.post(apis.CREATE_PROJECT, {
+               //    ...values,
+               // });
+               // console.log(res);
+               toast.success("Sucessfully worked", {
+                  position: "top-right",
+               });
+               Swal.fire("Success", "First step complete", "success");
             }}
          >
             <Form>
@@ -62,6 +78,7 @@ export default function CreateProjectForm() {
                         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Leave a short description..."
                      />
+                     <ErrorMsg name="description" />
 
                      <label
                         htmlFor="teamLength"
@@ -92,6 +109,7 @@ export default function CreateProjectForm() {
                            );
                         })}
                      </Field>
+                     <ErrorMsg name="githubRepo" />
 
                      <div className="flex justify-start m-4 gap-1 text-gray-900 dark:text-gray-200">
                         <h2 className="font-bold mr-5">Requirement</h2>
@@ -99,6 +117,7 @@ export default function CreateProjectForm() {
                            role="group"
                            className="flex items-center mb-4"
                            aria-labelledby="my-radio-group"
+                           defaultValue="Low"
                         >
                            <label>
                               <Field
@@ -138,6 +157,7 @@ export default function CreateProjectForm() {
                </div>
             </Form>
          </Formik>
+         <ToastContainer />
       </>
    );
 }

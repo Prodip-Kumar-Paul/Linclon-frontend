@@ -10,6 +10,7 @@ import Project from "./pages/Project";
 import LogIn from "./pages/login";
 import LogOut from "./pages/logOut";
 import CreateProject from "./components/Projects/CreateProject";
+import CreateProjectForm from "./components/Projects/CreateProjectForm";
 
 const authorized = [
    {
@@ -24,9 +25,13 @@ const authorized = [
             path: "/projects",
             element: <Project />,
          },
+         // {
+         //    path: "/create-project",
+         //    element: <CreateProject />,
+         // },
          {
             path: "/create-project",
-            element: <CreateProject />,
+            element: <CreateProjectForm />,
          },
          // {
          //   path: "/About",
@@ -65,9 +70,13 @@ const unAuthorized = [
          //   path: "/About",
          //   element: <About />,
          // },
+         // {
+         //    path: "/create-project",
+         //    element: <CreateProject />,
+         // },
          {
             path: "/create-project",
-            element: <CreateProject />,
+            element: <CreateProjectForm />,
          },
          {
             path: "/linclonauth",

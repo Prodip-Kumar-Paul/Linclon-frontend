@@ -33,7 +33,7 @@ const Nav = () => {
         id="navTop"
         className="text-white rounded-full bg-gradient-to-r from-cyan-500 via-violet-900 to-violet-900 py-2 xs:overflow-auto "
       >
-        <ul className="flex flex-row gap-6 text-xl ">
+        <section className="flex flex-row gap-6 text-xl ">
           <img
             src={Linclon}
             alt=""
@@ -42,12 +42,7 @@ const Nav = () => {
           ></img>
           {navigation.map(([path, name], index) => {
             return (
-              <li
-                key={Math.random()}
-                className="dark:hover:text-slate-900 px-3 py-1"
-              >
-                <Link to={path}>{name}</Link>
-              </li>
+                <Link key={index} className="dark:hover:text-slate-900 px-3 py-1" to={path}>{name}</Link>
             );
           })}
           <section className="grow-[2] shrink"></section>
@@ -59,9 +54,7 @@ const Nav = () => {
               placeholder="Search..."
             />
           </article>
-          <li>
-            <Link to={"/linclonauth"} className="cursor-pointer py-1 pb-2 px-2 rounded-[.2em] bg-cyan-500 text-[1rem]">Login</Link>
-          </li>
+            <Link to={"/linclonauth"} className="cursor-pointer py-1 px-2 rounded-[.2em] bg-cyan-500 text-[1rem]">Login</Link>
           <article onClick={themeChange} className="cursor-pointer shrink-0">
             <img
               src={theme ? sun : moon}
@@ -71,10 +64,9 @@ const Nav = () => {
               className="animate-bounce"
             />
           </article>
-          <li className=" dark:hover:text-[rgb(10,11,12)] py-1 pr-5">
-            <Link to="/profile">Profile</Link>
-          </li>
-        </ul>
+            <Link className=" dark:hover:text-black py-1 px-3" to="/profile">Profile</Link>
+            <article></article>
+        </section>
       </nav>
       <Outlet />
     </>

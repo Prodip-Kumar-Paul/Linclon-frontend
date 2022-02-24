@@ -5,12 +5,12 @@ export default function Tags() {
   const [tag, setTag] = useState(["tag", "data1"]);
   return (
     <>
-      <section>
+      <section className="my-2">
         {value.map((data) => {
           return (
               <span key={data} className="bg-slate-200 rounded-lg py-1 px-2 mx-1">
                 {data}
-                <span className="text-green-600 mx-1">x</span>
+                {/* <span className="text-green-600 mx-1">x</span> */}
               </span>
           );
         })}

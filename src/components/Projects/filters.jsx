@@ -1,19 +1,27 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Language from "./projectComponents/language";
 import { ProjectContext } from "./contextApiProject/contextProject";
 const Filter = () => {
-  const navigate = useNavigate();
-
+  const [tag, setTag] = useContext(ProjectContext);
   const clearTagsSelected = () => {
-    navigate("/projects", { replace: true });
+    document
+      .querySelectorAll('input[type="checkbox"]')
+      .forEach((e) => (e.checked = false));
+    setTag([]);
   };
   return (
     <>
-      <div className="flex flex-col min-w-[25%] h-[2rem] mx-4 bg-white rounded-lg">
-        <p className="text-[1.5rem] mx-auto">Filters</p>
-        <button className="bg-cyan-500 max-w-fit mx-auto px-1" onClick={clearTagsSelected}>Clear All</button>
-        <section className="mx-4 ">
+      <div className="flex flex-col min-w-[25%] h-fit mx-4 bg-white rounded-lg">
+        <section className="flex ">
+          <p className="text-[1.5rem] grow pl-4">Filters</p>
+          <button
+            className="text-white bg-cyan-500 my-1 mr-2 px-2 rounded-md"
+            onClick={clearTagsSelected}
+          >
+            Clear All
+          </button>
+        </section>
+        <section className="mx-2 my-2 dark:bg-black rounded-lg">
           <Language />
           <Language />
           <Language />

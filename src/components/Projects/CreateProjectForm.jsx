@@ -17,7 +17,8 @@ const ProjectCreateSchema = Yup.object().shape({
    ),
 });
 
-export default function CreateProjectForm() {
+const CreateProjectForm = () => {
+   console.log("create project form running");
    const repoDetails = [
       {
          name: "test",
@@ -160,4 +161,6 @@ export default function CreateProjectForm() {
          <ToastContainer />
       </>
    );
-}
+};
+
+export default React.memo(CreateProjectForm);

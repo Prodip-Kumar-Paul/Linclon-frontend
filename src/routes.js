@@ -11,6 +11,7 @@ import LogIn from "./pages/login";
 import LogOut from "./pages/logOut";
 import CreateProject from "./components/Projects/CreateProject";
 import CreateProjectForm from "./components/Projects/CreateProjectForm";
+import VideoUploader from "./components/Projects/VideoUploader";
 
 const authorized = [
    {
@@ -77,6 +78,10 @@ const unAuthorized = [
          {
             path: "/create-project",
             element: <CreateProjectForm />,
+         },
+         {
+            path: "/upload-project-video",
+            element: <VideoUploader />,
          },
          {
             path: "/linclonauth",

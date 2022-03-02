@@ -11,7 +11,7 @@ import findProject from "../assets/images/home_icons/findProject.png";
 import findProfile from "../assets/images/home_icons/findProfile.png";
 import feedback from "../assets/images/home_icons/feedback.png";
 
-const Landing = () => {
+const Home = () => {
   // const [name,setName]=useState();
   // useEffect(() => {
   //   setName( sessionStorage.getItem("email"));
@@ -174,4 +174,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Home;

@@ -1,17 +1,21 @@
-import React from "react";
-import { useRoutes } from "react-router-dom";
+import React, { useContext } from "react";
+import { Routes, Route, useRoutes } from "react-router-dom";
 
 //modules
-import Nav from "./components/nav";
-import Home from "./pages/landing";
-import Error from "./utils/error";
-import Profile from "./pages/profile";
-import Project from "./pages/Project";
-import LogIn from "./pages/login";
-import LogOut from "./pages/logOut";
-import CreateProject from "./components/Projects/CreateProject";
-import CreateProjectForm from "./components/Projects/CreateProjectForm";
-import VideoUploader from "./components/Projects/VideoUploader";
+import Nav from "../components/nav";
+import Home from "../pages/landing";
+import Error from "../utils/error";
+import Profile from "../pages/profile";
+import Project from "../pages/Project";
+import LogIn from "../pages/login";
+import LogOut from "../pages/logOut";
+// import CreateProject from "./components/Projects/CreateProject";
+import VideoUploader from "../components/Projects/VideoUploader";
+import AuthContext from "../store/auth-context";
+
+const CreateProjectForm = React.lazy(() =>
+   import("../components/Projects/CreateProjectForm")
+);
 
 const authorized = [
    {
@@ -26,18 +30,10 @@ const authorized = [
             path: "/projects",
             element: <Project />,
          },
-         // {
-         //    path: "/create-project",
-         //    element: <CreateProject />,
-         // },
          {
             path: "/create-project",
             element: <CreateProjectForm />,
          },
-         // {
-         //   path: "/About",
-         //   element: <About />,
-         // },
          {
             path: "/Profile",
             element: <Profile />,
@@ -67,14 +63,6 @@ const unAuthorized = [
             path: "/projects",
             element: <Project />,
          },
-         // {
-         //   path: "/About",
-         //   element: <About />,
-         // },
-         // {
-         //    path: "/create-project",
-         //    element: <CreateProject />,
-         // },
          {
             path: "/create-project",
             element: <CreateProjectForm />,
@@ -96,8 +84,8 @@ const unAuthorized = [
 ];
 
 const PageRoutes = () => {
-   const token = sessionStorage.getItem("token");
-   const routes = token ? authorized : unAuthorized;
+   const authCtx = useContext(AuthContext);
+   const routes = authCtx.isLoggedIn ? authorized : unAuthorized;
    return useRoutes(routes);
 };
 

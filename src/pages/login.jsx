@@ -72,7 +72,7 @@ const LogIn = () => {
                >
                   <option value="0">User Type ?</option>
                   <option value="1">User</option>
-                  <option value="2">Contributor</option>
+                  <option value="2">Admin</option>
                </select>
                <label className="mx-auto">Email :</label>
                <input
